@@ -21,7 +21,7 @@ gem 'jbuilder', '~> 2.7'
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
+gem 'jquery-rails'
 
 gem "bootstrap-sass", "3.4.1"
 
@@ -29,6 +29,10 @@ gem "bootstrap-sass", "3.4.1"
 gem "sprockets-rails"
 
 gem 'bcrypt', '3.1.13'
+
+# for testing 
+gem 'minitest-reporters'
+
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
@@ -56,6 +60,8 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
+  gem 'rails-controller-testing'
+
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
