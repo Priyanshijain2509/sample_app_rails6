@@ -31,7 +31,7 @@ gem "sprockets-rails"
 gem 'bcrypt', '3.1.13'
 
 # for testing 
-gem 'minitest-reporters'
+# gem 'minitest-reporters'
 
 
 # Use Active Storage variant
@@ -61,6 +61,10 @@ group :test do
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
   gem 'rails-controller-testing'
+  gem 'minitest','5.19'
+  gem 'minitest-reporters'
+  gem 'guard','2.18.0'
+  gem 'guard-minitest','2.4.6'
 
 end
 
