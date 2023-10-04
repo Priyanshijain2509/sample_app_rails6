@@ -16,6 +16,8 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    puts "HELLLO"
+    puts "#{@comment.id}"
     @comment.destroy
     flash[:success] = "Comment deleted"
     redirect_to user_path(current_user)
