@@ -1,0 +1,18 @@
+<div class="Comment">
+  <h2>Comments </h2>
+    <strong>Comment Count:</strong>
+    <%= @comments.count%>
+    <% @comments.each do |comment| %>
+      <p>
+        <strong><%= comment.user.name %></strong> <%= comment.body %>
+      </p>
+    <% end %>
+
+    <%= form_with(model: @comment, url: micropost_comments_path(@micropost.id, user_id: current_user.id), local: true) do |f| %>
+      <p>
+      <%= f.label :body %><br>
+      <%= f.text_area :body %>
+      <%= f.submit "submit" %>
+      </p>
+    <% end %>
+</div>

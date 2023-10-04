@@ -11,4 +11,28 @@
       <%= button_to "delete", micropost, method: :delete, data: { confirm: "You sure?" } %>
     <% end %>
   </span>
+<span>
+
+  <span class="Comment">
+    <h2>Comments </h2>
+    <strong>Comment Count:</strong>
+    <%= micropost.comments.count%>
+    <% micropost.comments.each do |comment| %>
+      <p>
+        <strong><%= comment.user.name %></strong> <%= comment.body %>
+        <% if current_user?(comment.user) %>
+          <%= button_to "delete", micropost_comment_path(comment), method: :delete, data: { confirm: "You sure?" } %>
+        <% end %>
+
+      </p>
+    <% end %>
+
+    <%= form_with(model: @comment, url: micropost_comments_path(micropost_id: micropost.id), local: true) do |f| %>
+      <p>
+        <%= f.label :body %><br>
+        <%= f.text_area :body %>
+        <%= f.submit "submit" %>
+      </p>
+    <% end %>
+  </span>
 </li>
