@@ -15,18 +15,19 @@
 
   <span class="Comment">
     <h2>Comments </h2>
-    <strong>Comment Count:</strong>
-    <%= micropost.comments.count%>
-    <% micropost.comments.each do |comment| %>
-      <p class="DestroyComment">
-        <strong><%= comment.user.name %></strong> <%= comment.body %>
-        <% if current_user?(comment.user) %>
-        <li class="deleteComment" data-comment-id="<%= comment.id %>">
-          <%= link_to "Destroy", micropost_comment_path(comment.id), class: 'delete-comment', data: { micropost_id: micropost.id, comment_id: comment.id } %> 
+    <strong>Comment Count: <%= micropost.comments.count%></strong>
+    <ul id="comments">
+      <% micropost.comments.each do |comment| %>
+        <li class="DestroyComment" id = "comment_<%=comment.id%>">
+          <strong><%= comment.user.name %></strong> <%= comment.body %>
+          <% if current_user?(comment.user) %>
+          <span class="deleteComment ml-20" data-comment-id="<%= comment.id %>">
+            <%= link_to "Destroy", micropost_comment_path(comment.id), class: 'delete-comment', data: { micropost_id: micropost.id, comment_id: comment.id } %> 
+          </span>
+          <% end %>
         </li>
-        <% end %>
-      </p>
-    <% end %>
+      <% end %>
+    </ul>
     <%= form_with(model: @comment, url: micropost_comments_path(micropost_id: micropost.id),  local: false, remote: true) do |f| %>
       <p>
         <%= f.text_area :body, placeholder: "Add a comment..." %>
