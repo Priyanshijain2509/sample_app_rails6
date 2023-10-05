@@ -12,13 +12,13 @@ class CommentsController < ApplicationController
     else
       flash[:error]= "Comment can't be created!"
     end
-    redirect_to user_path(current_user)
+    redirect_to request.referrer || root_url
   end
 
   def destroy
     @comment.destroy
     flash[:success] = "Comment deleted"
-    redirect_to user_path(current_user)
+    redirect_to request.referrer || root_url
   end
 
   private

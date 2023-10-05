@@ -1,32 +1,32 @@
-<li id="micropost-<%= micropost.id %>">
+<li id="micropost-<%= micropost.id %>" data-micropost-id="<%= micropost.id %>">
   <%= link_to gravatar_for(micropost.user, size: 50), micropost.user %>
   <span class="user"><%= link_to micropost.user.name, micropost.user %></span>
-  <span class="content">
-    <%= micropost.content %>
-    <%= image_tag micropost.display_image if micropost.image.attached? %>
-  </span>
-  <span class="timestamp">
-    Posted <%= time_ago_in_words(micropost.created_at) %> ago.
-    <% if current_user?(micropost.user) %>
-      <%= button_to "delete", micropost, method: :delete, data: { confirm: "You sure?" } %>
-    <% end %>
-  </span>
-<span>
+    <span class="content">
+      <%= micropost.content %>
+      <%= image_tag micropost.display_image if micropost.image.attached? %>
+    </span>
+    <span class="timestamp">
+      Posted <%= time_ago_in_words(micropost.created_at) %> ago.
+      <% if current_user?(micropost.user) %>
+        <%= button_to "delete", micropost, method: :delete, data: { confirm: "You sure?" } %>
+      <% end %>
+    </span>
+  <span>
 
   <span class="Comment">
     <h2>Comments </h2>
     <strong>Comment Count:</strong>
     <%= micropost.comments.count%>
     <% micropost.comments.each do |comment| %>
-      <p>
+      <p class="DestroyComment">
         <strong><%= comment.user.name %></strong> <%= comment.body %>
         <% if current_user?(comment.user) %>
-          <%= button_to "delete", micropost_comment_path(micropost, comment), method: :delete, data: { confirm: "You sure?" } , 'data-comment-id' => comment.id %>
+        <li class="deleteComment" data-comment-id="<%= comment.id %>">
+          <%= link_to "Destroy", micropost_comment_path(comment.id), class: 'delete-comment', data: { micropost_id: micropost.id, comment_id: comment.id } %> 
+        </li>
         <% end %>
-
       </p>
     <% end %>
-
     <%= form_with(model: @comment, url: micropost_comments_path(micropost_id: micropost.id),  local: false, remote: true) do |f| %>
       <p>
         <%= f.text_area :body, placeholder: "Add a comment..." %>

@@ -9,7 +9,7 @@ gem 'rails', '~> 6.0.1'
 #for image resizing 
 gem 'image_processing', '1.9.3'
 gem 'mini_magick', '4.9.5'
-
+gem 'rails-ujs', '5.1.0.beta1'
 #use active storage for uploading image and given below is for test cases
 gem 'active_storage_validations', '0.8.2'
 # Use sqlite3 as the database for Active Record
