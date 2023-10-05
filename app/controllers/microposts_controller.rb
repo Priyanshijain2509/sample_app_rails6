@@ -34,8 +34,8 @@ class MicropostsController < ApplicationController
   end
 
   def correct_user
-    @comment = current_user.microposts.find_by(id: params[:micropost_id]).comments.find_by(id: params[:id])
-    redirect_to root_url if @comment.nil?
+    @micropost = current_user.microposts.find_by(id: params[:micropost_id])
+    redirect_to root_url if @micropost.nil?
   end
   
 end
