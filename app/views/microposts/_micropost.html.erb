@@ -15,9 +15,10 @@
 
   <span class="Comment">
     <h2>Comments </h2>
-    <strong>Comment Count: <%= micropost.comments.count%></strong>
-    <ul id="comments">
+    <strong id="comment_count">Comment Count: <%= micropost.comments.count%></strong>
+    <ul class="comment_user", id="micropost_<%=micropost.id%>">
       <% micropost.comments.each do |comment| %>
+        <% comment ||= @comment%>
         <li class="DestroyComment" id = "comment_<%=comment.id%>">
           <strong><%= comment.user.name %></strong> <%= comment.body %>
           <% if current_user?(comment.user) %>
@@ -28,11 +29,6 @@
         </li>
       <% end %>
     </ul>
-    <%= form_with(model: @comment, url: micropost_comments_path(micropost_id: micropost.id),  local: false, remote: true) do |f| %>
-      <p>
-        <%= f.text_area :body, placeholder: "Add a comment..." %>
-        <%= f.submit "Create Comment" %>
-      </p>
-    <% end %>
+    <%= render partial: 'comments/comment', locals: { micropost: micropost } %>
   </span>
 </li>

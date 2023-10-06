@@ -1,0 +1,5 @@
+<div id="comment">
+  <% micropost ||= @micropost%>
+  <%= micropost.id %>
+  <%= render partial: 'comments/comment_form', locals: { micropost: micropost } %>
+</div>

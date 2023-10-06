@@ -1,19 +1,21 @@
 $(document).ready(function () {
   $('.createCommentForm').on('submit', function (e) {
     e.preventDefault(); 
-    const micropostId = $(this).data('micropost-id');
-    const formData = $(this).serialize();
-    const commentElementById = $(`#comment_${id}`);
+  
+    const id = $(this).attr('data-micropost-id');
+    // const micropostId = $(this).data('micropost-id');
+    // const formData = $(this).serialize();
+    // const commentElementById = $(`#comment_${id}`);
 
-    $.ajax({
-      type: 'POST',
-      url: `/microposts/${micropostId}/comments`,
-      data: formData,
-      success: function (response) {
+    // $.ajax({
+    //   type: 'POST',
+    //   url: `/microposts/${micropostId}/comments`,
+    //   data: formData,
+    //   success: function (response) {
         
-        console.log(response)
-      }
-    });
+    //     console.log(response)
+    //   }
+    // });
   });
 });
 

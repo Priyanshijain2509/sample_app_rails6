@@ -21,22 +21,31 @@ class CommentsController < ApplicationController
     redirect_to request.referrer || root_url
   end
 
-
   def create
     @micropost =  Micropost.find(params[:micropost_id])
     @comment = @micropost.comments.build(comment_params)
     @comment.user = current_user
 
-    respond_to do |format|
-      format.html { redirect_to request.referrer || root_url }
-      format.js { redirect_to request.referrer || root_url }
+    if @comment.save
+      flash[:success] = "Comment created!"
+      respond_to do |format|
+        format.html { redirect_to request.referrer || root_url }
+        format.js 
+      end
+    else
+      flash[:error]= "Comment can't be created!"
     end
   end
+
+  def destroy
+    @
+  end
+
 
   private
 
   def comment_params
-    params.permit(:body)
+    params.require(:comment).permit(:body)
   end
 
   def correct_user?

@@ -1,0 +1,9 @@
+<% micropost ||= @micropost%>
+<div id="micro_<%= micropost.id %>", class="comment_form">
+  <%= form_with(model: micropost.comments.new, url: micropost_comments_path(micropost.id), remote: true, html: { class: 'createCommentForm' }) do |f| %>
+    <p>
+      <%= f.text_area :body, placeholder: "Add a comment..." %>
+      <%= f.submit "Create Comment", data: { micropost_id: micropost.id }, html: { class: 'input_form'} %>
+    </p>
+  <% end %>
+</div>
