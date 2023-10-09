@@ -11,6 +11,8 @@ $gray-medium-light: #eaeaea;
 }
 
 /* universal */
+
+
 body {
 	padding-top: 60px;
 }
@@ -49,12 +51,12 @@ h1 {
 }
 
 h2 {
-	font-size: 1.2em;
+	font-size: 1.5em;
 	letter-spacing: -1px;
 	margin-bottom: 30px;
 	text-align: center;
 	font-weight: normal;
-	color: $gray-light;
+	color: rgb(24, 23, 23);
 }
 
 p {
@@ -131,6 +133,17 @@ p {
 	padding: 0;
 }
 
+.micropost_box{
+	border: 2px solid rgb(112, 111, 111);
+	border-radius: 2rem;
+	margin: 20px;
+	
+}
+
+// .micropost_box > .user{
+// 	margin-left: 20%;
+// }
+
 /* footer */
 footer {
 	margin-top: 45px;
@@ -167,13 +180,20 @@ textarea,
 select,
 .uneditable-input {
 	border: 1px solid #bbb;
-	width: 100%;
+	width: 50%;
 	margin-bottom: 15px;
 	@include box_sizing;
 }
 
 input {
 	height: auto !important;
+}
+
+input[type="submit"] {
+    -webkit-appearance: button;
+    cursor: pointer;
+	width: 20%;
+	text-align: left;
 }
 
 #error_explanation {
@@ -194,11 +214,11 @@ input {
 }
 
 .checkbox {
-	margin-top: -10px;
-	margin-bottom: 10px;
+		margin-top: -10px;
+		margin-bottom: 10px;
 	span {
-	margin-left: 20px;
-	font-weight: normal;
+		margin-left: 20px;
+		font-weight: normal;
 	}
 }
 #session_remember_me {
@@ -208,12 +228,12 @@ input {
 
 /* Users index */
 .users {
-	list-style: none;
-	margin: 0;
+		list-style: none;
+		margin: 0;
 	li {
-	overflow: auto;
-	padding: 10px 0;
-	border-bottom: 1px solid $gray-lighter;
+		overflow: auto;
+		padding: 10px 0;
+		border-bottom: 1px solid $gray-lighter;
 	}
 }
 
@@ -238,14 +258,14 @@ input {
 	}
 	}
 	.timestamp {
-	color: $gray-light;
-	display: block;
-	margin-left: 60px;
+		color: $gray-light;
+		display: block;
+		margin-left: 60px;
 	}
 	.gravatar {
-	float: left;
-	margin-right: 10px;
-	margin-top: 5px;
+		float: left;
+		margin-right: 10px;
+		margin-top: 5px;
 	}
 }
 

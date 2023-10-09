@@ -15,11 +15,11 @@ class CommentsController < ApplicationController
   #   redirect_to request.referrer || root_url
   # end
 
-  def destroy
-    @comment.destroy
-    flash[:success] = "Comment deleted"
-    redirect_to request.referrer || root_url
-  end
+  # def destroy
+  #   @comment.destroy
+  #   flash[:success] = "Comment deleted"
+  #   redirect_to request.referrer || root_url
+  # end
 
   def create
     @micropost =  Micropost.find(params[:micropost_id])
@@ -38,10 +38,17 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @
+    @comment = Comment.find(params[:id])
+    if @comment.destroy
+      flash[:success] = "Comment destroyed!"
+      respond_to do |format|
+        format.html { redirect_to request.referrer || root_url }
+        format.js
+      end
+    end
   end
-
-
+  
+  
   private
 
   def comment_params
