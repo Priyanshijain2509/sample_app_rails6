@@ -39,6 +39,9 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment = Comment.find(params[:id])
+    @micropost =  Micropost.find(params[:micropost_id])
+    @comment.user = current_user
+    
     if @comment.destroy
       flash[:success] = "Comment destroyed!"
       respond_to do |format|

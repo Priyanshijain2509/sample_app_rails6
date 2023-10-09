@@ -22,13 +22,13 @@
         <li class="DestroyComment" id = "comment_<%=comment.id%>">
           <strong><%= comment.user.name %></strong> <%= comment.body %>
           <% if current_user?(comment.user) %>
-          <span class="deleteComment ml-20" data-comment-id="<%= comment.id %>">
-            <%= link_to "Destroy", micropost_comment_path(comment.id), class: 'delete-comment', data: { micropost_id: micropost.id, comment_id: comment.id } %> 
-          </span>
+            <span class="deleteComment ml-20" data-comment-id="<%= comment.id %>">
+              <%= link_to "Destroy", micropost_comment_path(micropost_id: micropost.id, id: comment.id), method: :delete, class: 'delete-comment',remote: true, data: { micropost_id: micropost.id, comment_id: comment.id } %> 
+            </span>
           <% end %>
         </li>
       <% end %>
     </ul>
-    <%= render partial: 'comments/comment', locals: { micropost: micropost } %>
+    <%= render partial: 'comments/comment', locals: { micropost: micropost }, html: {id: "form_norefresh"} %>
   </span>
 </li>

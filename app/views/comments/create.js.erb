@@ -6,10 +6,9 @@ var li = '<li class="DestroyComment" id="comment_<%= @comment.id %>">' +
 '<strong><%= @comment.user.name %></strong>' + '<%= @comment.body %>' +
 '<% if current_user?(@comment.user) %>' +
 '<span class="deleteComment ml-20" data-comment-id="<%= @comment.id %>">' +
-'<%= link_to "Destroy", micropost_comment_path(@micropost.id, @comment), method: :delete, class: "delete-comment", data: { comment_id: @comment.id } %>'
+'<%= link_to "Destroy", micropost_comment_path(@micropost.id, @comment), method: :delete, remote: true, class: "delete-comment", data: { comment_id: @comment.id } %>' +
 '</span>' +
 '<% end %>' +
 '</li>';
-
 
 $('.comment_user').append(li);
