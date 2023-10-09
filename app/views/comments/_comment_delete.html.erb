@@ -1,4 +1,0 @@
-<%= puts @comment.id %>
-<span class="deleteComment ml-20" data-comment-id="<%= @comment.id %>">
-  <%= link_to "Destroy", micropost_comment_path(@comment.id), class: 'delete-comment',remote: true, data: { micropost_id: @micropost.id, comment_id: @comment.id } %> 
-</span>

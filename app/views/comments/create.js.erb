@@ -1,5 +1,4 @@
-console.log("hello from create comment");
-$('#comment').html("<%= escape_javascript(render('comments/comment_form')) %>");
+$('#comment').html('<%= escape_javascript(render('comments/comment')) %>');
 $('#comment_count').html('Comment Count: <%= @micropost.comments.count%>');
 
 var li = '<li class="DestroyComment" id="comment_<%= @comment.id %>">' +
